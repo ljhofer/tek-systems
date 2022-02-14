@@ -14,4 +14,10 @@ from customers
 where country='Germany'
 ;
 
+-- query three
+select distinct status
+from orders 
+order by status
+;
+
 
