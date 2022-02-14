@@ -34,3 +34,8 @@ where officeCode="1"
 order by lastName 
 ;
 
+-- query six
+select productName as `Name`, productLine as `Product Line`, productScale as `Product Scale`, productVendor as `Product Vendor`
+from products
+;
+
