@@ -27,4 +27,10 @@ where paymentDate>="2005-01-01"
 order by paymentDate 
 ;
 
+-- query five
+select lastName as `Last Name`, firstName as `First Name`, email, jobTitle as `Job Title`
+from employees
+where officeCode="1"
+order by lastName 
+;
 
