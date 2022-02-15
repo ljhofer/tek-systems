@@ -50,3 +50,10 @@ join officer as o on c.CUST_ID = o.CUST_ID
 
 -- query six
 -- List all account transaction details for individual customers whose last name starts with 'T'.
+select * 
+from acc_transaction as act
+left join account as a on act.ACCOUNT_ID = a.ACCOUNT_ID 
+join customer as c on a.CUST_ID = c.CUST_ID 
+join individual as i on c.CUST_ID = i.CUST_ID  
+where i.LAST_NAME LIKE 'F%'
+;
