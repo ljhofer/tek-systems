@@ -36,6 +36,22 @@ group by pl.productLine
 order by `# Sold` desc
 ;
 
+-- query five
+-- For each employee who represents customers, output the total # of orders that employee’s customers have placed alongside the total sale amount of those orders. 
+-- The employee name should be output as a single column named “Sales Rep” formatted as “lastName, firstName”. The second column should be titled “# Orders” and the third should be “Total Sales”. 
+-- Sort the output by Total Sales descending. Only (and all) employees with the job title ‘Sales Rep’ should be included in the output, and if the employee made no sales the Total Sales should display as “0.00”.
+
+select CONCAT(e.lastName, ', ', e.firstName) as `Sales Rep`, COUNT(od.orderNumber) as `# Orders`, 
+	if (SUM(od.quantityOrdered*priceEach) is NULL, '0.00', SUM(od.quantityOrdered*priceEach)) as `Total Sales`
+from employees as e 
+left join customers as c on e.employeeNumber = c.salesRepEmployeeNumber 
+left join orders as o on c.customerNumber = o.customerNumber 
+left join orderdetails as od on o.orderNumber = od.orderNumber 
+where jobTitle='Sales Rep'
+group by `Sales Rep`
+order by `Total Sales` desc
+;
+
 
 
 
