@@ -27,7 +27,7 @@ from employee
 
 select e.LAST_NAME as `Last Name`, e.TITLE as `Title`, e2.LAST_NAME as `Supervisor`, e2.TITLE as `Supervisor Title`
 from employee as e
-join employee as e2 on e.SUPERIOR_EMP_ID = e2.EMP_ID 
+left join employee as e2 on e.SUPERIOR_EMP_ID = e2.EMP_ID 
 ;
 
 -- query five
@@ -47,3 +47,6 @@ from account as a
 left join customer as c on a.CUST_ID = a.CUST_ID 
 join officer as o on c.CUST_ID = o.CUST_ID 
 ;
+
+-- query six
+-- List all account transaction details for individual customers whose last name starts with 'T'.
