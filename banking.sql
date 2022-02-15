@@ -22,4 +22,11 @@ select distinct(TITLE)
 from employee
 ;
 
+-- query four
+-- Show the last name and title of each employee, along with the last name and title of that employee's boss.
+select * from employee;
 
+select e.LAST_NAME as `Last Name`, e.TITLE as `Title`, e2.LAST_NAME as `Supervisor`, e2.TITLE as `Supervisor Title`
+from employee as e
+join employee as e2 on e.SUPERIOR_EMP_ID = e2.EMP_ID 
+;
