@@ -60,6 +60,6 @@ order by `Total Sales` desc
 
 select DATE_FORMAT(paymentDate, "%M") as `Month`, DATE_FORMAT(paymentDate, "%Y") as `Year`, FORMAT(SUM(amount), 2) as `Payments Received`  
 from payments 
-group by `Year`, `Month`
+group by year(paymentDate), month(paymentDate)
 ;
 
