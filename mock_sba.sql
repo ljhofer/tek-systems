@@ -56,6 +56,7 @@ select i.name as `ITEM_NAME`, SUM(i.price*oi.QUANTITY) as `REVENUE`
 from order_items as oi
 join items as i on oi.ITEM_ID = i.ITEM_ID 
 group by `ITEM_NAME`
+order by `Revenue` desc
 ;
 
 
@@ -70,3 +71,16 @@ group by `ITEM_NAME`
 --  ii. If the store has been involved in less than 3 orders but more than 1 order, mark as ‘Medium’ 
 --  iii. If the store has been involved with 1 or less orders, mark as ‘Low’ 
 -- d. Should be ordered by the Order Quantity in Descending Order
+
+select s.name as `Store Name`, COUNT(o.ORDER_ID) as `Order Quantity`,
+case 
+	when COUNT(o.ORDER_ID)>=3 then 'High'
+	when COUNT(o.ORDER_ID)=2 then 'Medium'
+	when COUNT(o.ORDER_ID)<=1 then 'Low'
+end as `Sales Figures`
+from stores as s
+join orders as o on s.STORE_ID = o.STORE_ID 
+group by `Store Name`
+order by `Order Quantity` desc
+;
+
