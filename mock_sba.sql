@@ -1,20 +1,28 @@
  
-
 use mock_sba_db;
 
 -- query 1
 -- Create a query to return all orders made by users with the first name of “Marion”
-select * 
+
+select *
+from orders;
+
+
+select o.ORDER_ID, o.USER_ID, o.STORE_ID 
 from orders as o
-join users as u on o.USER_ID = o.USER_ID 
+join users as u on o.USER_ID = u.USER_ID 
 where u.FIRST_NAME='Marion'
 ;
 
 
-
 -- query 2
 -- Create a query to select all users that have not made an order 
-
+select USER_ID 
+from orders
+where USER_ID not in (
+select distinct USER_ID from users
+)
+;
 
 
 -- query 3
