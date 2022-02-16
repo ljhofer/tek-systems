@@ -52,7 +52,11 @@ order by o.ORDER_ID
 -- Revenue for an item can be found as (Item Price * Total Quantity Ordered). 
 -- Please return the first column as ‘ITEM_NAME’ and the second column as ‘REVENUE’. 
 
-
+select i.name as `ITEM_NAME`, SUM(i.price*oi.QUANTITY) as `REVENUE`
+from order_items as oi
+join items as i on oi.ITEM_ID = i.ITEM_ID 
+group by `ITEM_NAME`
+;
 
 
 -- query 6 
