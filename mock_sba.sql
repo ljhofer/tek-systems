@@ -17,16 +17,25 @@ where u.FIRST_NAME='Marion'
 
 -- query 2
 -- Create a query to select all users that have not made an order 
-select USER_ID 
-from orders
+select * 
+from users
 where USER_ID not in (
-select distinct USER_ID from users
+select USER_ID from orders
 )
 ;
 
 
 -- query 3
 -- Create a Query to select the names and prices of all items that have been part of 2 or more separate orders. 
+select i.NAME, i.PRICE 
+from items as i
+join order_items as oi on oi.ITEM_ID = i.ITEM_ID
+group by oi.ITEM_ID
+having COUNT(oi.ORDER_ID) >=2
+;
+
+
+
 
 
 
